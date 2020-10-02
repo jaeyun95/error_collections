@@ -4,7 +4,8 @@
 ### Error List
 * #### [﻿RuntimeError: cuda runtime error (710) : device-side assert triggered](#error1)  [Blog](https://blog.naver.com/jaeyoon_95/222104626159) 
 * #### [﻿RuntimeError: Expected object of scalar type Half but got scalar type Float](#error2)  [Blog](https://blog.naver.com/jaeyoon_95/222064412708) 
-* #### [﻿AttributeError: module 'tensorflow' has no attribute 'sub'](#error3)  [Blog](https://blog.naver.com/jaeyoon_95/222007030881) 
+* #### [﻿AttributeError: module 'tensorflow' has no attribute 'sub'](#error3)  [Blog](https://blog.naver.com/jaeyoon_95/222007030881)   
+* #### [ModuleNotFoundError: No module named 'sklearn'](#error4)  [Blog](https://blog.naver.com/jaeyoon_95/222007026711)   
 
 
 ---
@@ -51,4 +52,20 @@ tf.subtract
 
 # before tf.mul
 tf.multiply
+```   
+   
+---
+## error4   
+#### error : "ModuleNotFoundError: No module named 'sklearn'"   
+```
+﻿ModuleNotFoundError: No module named 'sklearn'
+```
+#### cause : 'sklearn' library doesn't installed.     
+#### solve : You can install it with the command below.   
+```
+# conda
+conda install scikit-learn
+
+# pip
+pip3 install -U scikit-learn
 ```
