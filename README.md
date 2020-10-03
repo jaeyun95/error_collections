@@ -6,6 +6,7 @@
 * #### [﻿RuntimeError: Expected object of scalar type Half but got scalar type Float](#error2)  [Blog](https://blog.naver.com/jaeyoon_95/222064412708) 
 * #### [﻿AttributeError: module 'tensorflow' has no attribute 'sub'](#error3)  [Blog](https://blog.naver.com/jaeyoon_95/222007030881)   
 * #### [ModuleNotFoundError: No module named 'sklearn'](#error4)  [Blog](https://blog.naver.com/jaeyoon_95/222007026711)   
+* #### [RuntimeError: Expected object of backend CUDA but got backend CPU for argument](#error5)  [Blog](https://blog.naver.com/jaeyoon_95/221992427221)   
 
 
 ---
@@ -68,4 +69,21 @@ conda install scikit-learn
 
 # pip
 pip3 install -U scikit-learn
+```   
+   
+---
+## error5   
+#### error : "RuntimeError: Expected object of backend CUDA but got backend CPU for argument"   
 ```
+﻿﻿RuntimeError: Expected object of backend CUDA but got backend CPU for argument
+```
+#### cause : This error occurs when setting model to gpu(cuda) and loading tensor to cpu.   
+#### solve : Set tensor to gpu(cuda).   
+```
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model = BertModel.from_pretrained(bert_model)
+
+model.to(device) #model load to GPU
+
+input_tensor = input_tensor.to(device) #tensor load to GPU
+```   
