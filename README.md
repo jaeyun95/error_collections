@@ -2,11 +2,11 @@
 
 - - -
 ### Error List
-* #### [﻿RuntimeError: cuda runtime error (710) : device-side assert triggered](#error1)  [Blog](https://blog.naver.com/jaeyoon_95/222104626159) 
-* #### [﻿RuntimeError: Expected object of scalar type Half but got scalar type Float](#error2)  [Blog](https://blog.naver.com/jaeyoon_95/222064412708) 
-* #### [﻿AttributeError: module 'tensorflow' has no attribute 'sub'](#error3)  [Blog](https://blog.naver.com/jaeyoon_95/222007030881)   
-* #### [ModuleNotFoundError: No module named 'sklearn'](#error4)  [Blog](https://blog.naver.com/jaeyoon_95/222007026711)   
-* #### [RuntimeError: Expected object of backend CUDA but got backend CPU for argument](#error5)  [Blog](https://blog.naver.com/jaeyoon_95/221992427221)   
+* #### [﻿RuntimeError: cuda runtime error (710) : device-side assert triggered](#error1)  [▶Blog](https://blog.naver.com/jaeyoon_95/222104626159) 
+* #### [﻿RuntimeError: Expected object of scalar type Half but got scalar type Float](#error2)  [▶Blog](https://blog.naver.com/jaeyoon_95/222064412708) 
+* #### [﻿AttributeError: module 'tensorflow' has no attribute 'sub'](#error3)  [▶Blog](https://blog.naver.com/jaeyoon_95/222007030881)   
+* #### [ModuleNotFoundError: No module named 'sklearn'](#error4)  [▶Blog](https://blog.naver.com/jaeyoon_95/222007026711)   
+* #### [RuntimeError: Expected object of backend CUDA but got backend CPU for argument](#error5)  [▶Blog](https://blog.naver.com/jaeyoon_95/221992427221)   
 
 
 ---
@@ -80,7 +80,7 @@ pip3 install -U scikit-learn
 #### cause : This error occurs when setting model to gpu(cuda) and loading tensor to cpu.   
 #### solve : Set tensor to gpu(cuda).   
 ```
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu") 
 model = BertModel.from_pretrained(bert_model)
 
 model.to(device) #model load to GPU
