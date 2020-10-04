@@ -7,6 +7,7 @@
 * #### [﻿AttributeError: module 'tensorflow' has no attribute 'sub'](#error3)  [▶Blog](https://blog.naver.com/jaeyoon_95/222007030881)   
 * #### [ModuleNotFoundError: No module named 'sklearn'](#error4)  [▶Blog](https://blog.naver.com/jaeyoon_95/222007026711)   
 * #### [RuntimeError: Expected object of backend CUDA but got backend CPU for argument](#error5)  [▶Blog](https://blog.naver.com/jaeyoon_95/221992427221)   
+* #### [RFailed to initialize NVML: Driver/library version mismatch](#error6)  [▶Blog](https://blog.naver.com/jaeyoon_95/221773869080)   
 
 
 ---
@@ -86,4 +87,63 @@ model = BertModel.from_pretrained(bert_model)
 model.to(device) #model load to GPU
 
 input_tensor = input_tensor.to(device) #tensor load to GPU
+```      
+   
+---
+## error6   
+#### error : "Failed to initialize NVML: Driver/library version mismatch"   
+```
+﻿﻿RuntimeError: Expected object of backend CUDA but got backend CPU for argument
+```
+#### cause : This error occurs because nvidia driver kernel module loaded incorrectly.   
+#### solve : Unloading and Loading nvidia driver kernel module.   
+(1) check loaded nvidia driver kernel.   
+```
+ailab@ailab:~$ lsmod | grep nvidia
+nvidia_drm             45056  5
+nvidia_modeset       1093632  8 nvidia_drm
+nvidia              18194432  382 nvidia_modeset
+drm_kms_helper        172032  1 nvidia_drm
+drm                   401408  8 drm_kms_helper,nvidia_drm
+ipmi_msghandler        53248  2 ipmi_devintf,nvidia
+
+```
+(2) Unloading nvidia driver kernel.   
+```
+sudo rmmod nvidia_drm
+sudo rmmod nvidia_modeset
+sudo rmmod nvidia_uvm
+sudo rmmod nvidia
+
+※If you get "rmmod: ERROR: Module nividia_drm is in use."
+Use this command : sudo lsof /dev/nvidia*
+```   
+(3) Check if the nvidia driver kernel is successfully load.
+```
+ailab@ailab:~$ nvidia-smi
+Sun Oct  4 22:53:35 2020       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 440.33.01    Driver Version: 440.33.01    CUDA Version: 10.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 108...  Off  | 00000000:01:00.0  On |                  N/A |
+| 95%   91C    P2   138W / 250W |   9287MiB / 11177MiB |     91%      Default |
++-------------------------------+----------------------+----------------------+
+|   1  GeForce GTX 108...  Off  | 00000000:02:00.0 Off |                  N/A |
+| 77%   82C    P2   215W / 250W |   8377MiB / 11178MiB |     91%      Default |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|    0       944      G   ...quest-channel-token=7500496501391111563   168MiB |
+|    0      1370      G   /usr/lib/xorg/Xorg                           237MiB |
+|    0      2091      G   compiz                                       165MiB |
+|    0      6066      C   python                                      8705MiB |
+|    0     28597      G   ...b/pycharm-community-2019.2/jbr/bin/java     3MiB |
+|    1      6067      C   python                                      8363MiB |
++-----------------------------------------------------------------------------+
 ```   
