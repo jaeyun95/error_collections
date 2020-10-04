@@ -7,7 +7,7 @@
 * #### [﻿AttributeError: module 'tensorflow' has no attribute 'sub'](#error3)  [▶Blog](https://blog.naver.com/jaeyoon_95/222007030881)   
 * #### [ModuleNotFoundError: No module named 'sklearn'](#error4)  [▶Blog](https://blog.naver.com/jaeyoon_95/222007026711)   
 * #### [RuntimeError: Expected object of backend CUDA but got backend CPU for argument](#error5)  [▶Blog](https://blog.naver.com/jaeyoon_95/221992427221)   
-* #### [RFailed to initialize NVML: Driver/library version mismatch](#error6)  [▶Blog](https://blog.naver.com/jaeyoon_95/221773869080)   
+* #### [Failed to initialize NVML: Driver/library version mismatch](#error6)  [▶Blog](https://blog.naver.com/jaeyoon_95/221773869080)   
 
 
 ---
