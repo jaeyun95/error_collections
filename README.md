@@ -93,7 +93,7 @@ input_tensor = input_tensor.to(device) #tensor load to GPU
 ## error6   
 #### error : "Failed to initialize NVML: Driver/library version mismatch"   
 ```
-﻿﻿RuntimeError: Expected object of backend CUDA but got backend CPU for argument
+Failed to initialize NVML: Driver/library version mismatch
 ```
 #### cause : This error occurs because nvidia driver kernel module loaded incorrectly.   
 #### solve : Unloading and Loading nvidia driver kernel module.   
