@@ -8,6 +8,7 @@
 * #### [ModuleNotFoundError: No module named 'sklearn'](#error4)  [▶Blog](https://blog.naver.com/jaeyoon_95/222007026711)   
 * #### [RuntimeError: Expected object of backend CUDA but got backend CPU for argument](#error5)  [▶Blog](https://blog.naver.com/jaeyoon_95/221992427221)   
 * #### [Failed to initialize NVML: Driver/library version mismatch](#error6)  [▶Blog](https://blog.naver.com/jaeyoon_95/221773869080)   
+* #### [TypeError: can't convert CUDA tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.](#error7)  [▶Blog](https://blog.naver.com/jaeyoon_95/222109610256)   
 
 
 ---
@@ -147,3 +148,17 @@ Sun Oct  4 22:53:35 2020
 |    1      6067      C   python                                      8363MiB |
 +-----------------------------------------------------------------------------+
 ```   
+   
+---
+## error7   
+#### error : "TypeError: can't convert CUDA tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first."   
+```
+TypeError: can't convert CUDA tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.
+```
+#### cause : This error occurs when allocated GPU tensor convert to type of numpy. X is GPU tensor. if you use X.numpy() function, This error is occur.   
+#### solve : Use .cpu() function to GPU tensor.
+```
+# X is GPU tensor. 
+X.numpy() # This causes an error.
+X.cpu().numpy() # This does not cause an error.
+```      
