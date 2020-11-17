@@ -9,7 +9,7 @@
 * #### [RuntimeError: Expected object of backend CUDA but got backend CPU for argument](#error5)  [▶Blog](https://blog.naver.com/jaeyoon_95/221992427221)   
 * #### [Failed to initialize NVML: Driver/library version mismatch](#error6)  [▶Blog](https://blog.naver.com/jaeyoon_95/221773869080)   
 * #### [TypeError: can't convert CUDA tensor to numpy. Use Tensor.cpu() to copy the tensor to host memory first.](#error7)  [▶Blog](https://blog.naver.com/jaeyoon_95/222109610256)   
-
+* #### [ModuleNotFoundError: No module named 'cPickle](#error8)  [▶Blog](https://blog.naver.com/jaeyoon_95/222147048475)   
 
 ---
 ## error1   
@@ -162,3 +162,19 @@ TypeError: can't convert CUDA tensor to numpy. Use Tensor.cpu() to copy the tens
 X.numpy() # This causes an error.
 X.cpu().numpy() # This does not cause an error.
 ```      
+
+---
+## error8
+#### error : "ModuleNotFoundError: No module named 'cPickle'"   
+```
+ModuleNotFoundError: No module named 'cPickle'
+```
+#### cause : In python version 3, 'cPickle' used 'pickle'.
+#### solve : Using 'pickle' module.
+```
+#before
+import cPickle as pickle
+
+#after
+import pickle
+```
