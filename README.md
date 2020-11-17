@@ -169,7 +169,7 @@ X.cpu().numpy() # This does not cause an error.
 ```
 ModuleNotFoundError: No module named 'cPickle'
 ```
-#### cause : In python version 3, 'cPickle' used 'pickle'.
+#### cause : In python version 3, 'cPickle' is used 'pickle'.
 #### solve : Using 'pickle' module.
 ```
 #before
